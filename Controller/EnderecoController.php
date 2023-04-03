@@ -1,7 +1,7 @@
 <?php
 
 
-namespace ApiCep\controller;
+namespace ApiCep\Controller;
 
    use ApiCep\Model\{EnderecoModel, CidadeModel};
    use Exception;
@@ -28,7 +28,8 @@ namespace ApiCep\controller;
       {
         try
         {
-         $bairro = parent::getStringFromUrl(isset($_GET['id_cidade']) ? $_GET['id_cidade'] : null, 'cep');
+         $bairro = parent::getStringFromUrl(isset($_GET['bairro']) ? $_GET['bairro'] : null, 'cep');
+         $id_cidade = parent::getIntFromUrl(isset($_GET['id_cidade']) ? $_GET['id_cidade'] : null, 'cep');
 
          $model = new EnderecoModel();
 
@@ -46,7 +47,7 @@ namespace ApiCep\controller;
       {
          try
          {
-            $cep = parent::getIntFromUrl(isse($_GET['cep']) ? $_GET['cep'] : null);
+            $cep = parent::getIntFromUrl(isset($_GET['cep']) ? $_GET['cep'] : null);
 
             $model = new EnderecoModel();
 
@@ -76,16 +77,16 @@ namespace ApiCep\controller;
 
       public static function getCidadesByUf()
       {
-         try
-         {
-            $uf = $_GET['uf'];
+         try {
 
+            $uf = $_GET['uf'];
             $model = new CidadeModel();
-            $model->getResponseAsJSON($model->rows);
-         }catch(Exception $e)
-         {
-            parent::getExceptionsAsJSON($e);
-         }
+            $model->getCidadesByUF($uf);
+
+         parent::getResponseAsJSON($model->rows);
+        } catch (Exception $e) {
+         parent::getExceptionsAsJSON($e);
+        }
       }
    
 

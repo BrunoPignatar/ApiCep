@@ -1,6 +1,6 @@
 <?php
 
-namespace ApiCep\controller;
+namespace ApiCep\Controller;
 
 use Exception;
 use Stringable;

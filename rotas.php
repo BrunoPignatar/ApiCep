@@ -2,11 +2,10 @@
 
 use ApiCep\controller\EnderecoController;
 
-$url = parse_url($_SERVER['REQUEST_UR1'], PHP_URL_PATH);
+$url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-switch
-{
-case '/endereco/by-cep':
+switch($url){
+    case '/endereco/by-cep':
     EnderecoController::getLogradouroByCep();
     break;
 
@@ -19,7 +18,7 @@ case '/endereco/by-cep':
     break;
 
     case '/bairro/by-cidade':
-    EnderecoController::getBairroByIdCidade();
+    EnderecoController::getBairrosByIdCidade();
     break;
 
     default:

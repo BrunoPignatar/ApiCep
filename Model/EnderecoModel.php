@@ -5,7 +5,7 @@ namespace ApiCep\Model;
 use ApiCep\DAO\EnderecoDAO;
 use Exception;
 
-class EnderecoModel extends EnderecoModel
+class EnderecoModel extends Model
 {
     public $id_logradouro, $tipo, $descrica0, $id_cidade,
     $uf, $complemento, $descricao_sem_numero, $descricao_cidade,
@@ -38,7 +38,7 @@ class EnderecoModel extends EnderecoModel
         }
     }
 
-
+    
     public function getBairrosByIdCidade($id_cidade)
     {
         try
@@ -51,6 +51,7 @@ class EnderecoModel extends EnderecoModel
         }
     }
 
+    
     public function getLogradouroByBairroAndCidade(string $bairro, int $id_cidade)
     {
         try
